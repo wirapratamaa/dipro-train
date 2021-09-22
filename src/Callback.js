@@ -46,7 +46,7 @@ export class Callback extends Component {
           return res.json().then((dataItem) => {
             this.setState(
               {
-                datas: dataItem,
+                datas: dataItem.length > 0 ? dataItem : "no data found",
               },
               () => {
                 this.addKeyValues(this.state.datas);
