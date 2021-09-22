@@ -23,7 +23,7 @@ class App extends Component {
       // <Temperature/>
       // <DataArr/>
       // <DataObject/>
-      // <LocalObj/>
+      // <LocalObj />
       <Callback />
     );
   }

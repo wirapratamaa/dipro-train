@@ -17,7 +17,6 @@ export class LocalObj extends Component {
     this.setState({
       getColor: filterCol[0],
     });
-    console.log(filterCol);
   };
 
   render() {
@@ -31,9 +30,7 @@ export class LocalObj extends Component {
             </option>
           ))}
         </select>
-        <div className={"box " + getColor.name}>
-          {/* <div className={getColor.name}></div> */}
-        </div>
+        <div className={"box " + getColor.name}></div>
       </div>
     );
   }

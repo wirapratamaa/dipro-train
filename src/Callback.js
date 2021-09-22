@@ -5,9 +5,9 @@ export class Callback extends Component {
     super(props);
     this.state = {
       datas: [],
-      description: "description",
-      isErr: true,
+      isErr: false,
       err: "",
+      plus: [],
     };
   }
   componentDidMount() {
@@ -32,31 +32,49 @@ export class Callback extends Component {
     this.setState({ datas: this.state.datas });
   };
 
+  sumId = (data) => {
+    this.setState({
+      plus: !data ? "" : data.reduce((a, item) => (a = a + item.id), 0),
+    });
+  };
+
   apiGet() {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((dataItem) => {
-        this.setState(
-          {
-            datas: dataItem,
-          },
-          () => {
-            this.addKeyValues(this.state.datas);
-          }
-        );
-        console.log(this.state.datas);
+    fetch("https://jsonplaceholder.typicode.com/postsx")
+      .then((res) => {
+        console.log(res);
+        if (res.status === 200) {
+          return res.json().then((dataItem) => {
+            this.setState(
+              {
+                datas: dataItem,
+              },
+              () => {
+                this.addKeyValues(this.state.datas);
+                this.sumId(this.state.datas);
+              }
+            );
+            console.log(this.state.datas);
+          });
+        } else {
+          this.setState({
+            err: "Could not fetch the data, please try again!",
+          });
+        }
       })
-      .catch((e) => {
+      .catch((error) => {
+        console.log(error.res);
         this.setState({
           isErr: true,
-          err: "Something went wrong",
+          err: this.state.err,
         });
       });
   }
   render() {
-    let { datas } = this.state;
+    let { datas, plus, err } = this.state;
     return (
       <div>
+        {err && <div>{err}</div>}
+        <h2>{plus}</h2>
         {datas.map((dataItem) => (
           <div
             className={"result " + this.getRed(dataItem.counter)}
