@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "text": "bernyanyi",
+    "checked": false
+  },
+  {
+    "id": 2,
+    "text": "menari",
+    "checked": false
+  },
+  {
+    "id": 3,
+    "text": "belajar",
+    "checked": false
+  }
+]
