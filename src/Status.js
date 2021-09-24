@@ -68,7 +68,7 @@ export class Status extends Component {
           console.log("status: " + res.status);
           return res.json();
         } else {
-          console.log("ngerror");
+          console.log("error");
           this.setState({
             err: "Could not fetch the data, please try again later!",
           });
