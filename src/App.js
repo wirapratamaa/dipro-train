@@ -1,12 +1,10 @@
 import "./App.css";
 import React, { Component } from "react";
-import Callback from "./Callback";
+// import Callback from "./Callback";
+import Status from "./Status";
 // import DataArr from "./DataArr";
 // import DataObject from "./DataObject";
 // import LocalObj from "./LocalObj";
-// import Todo from "./Todo";
-// import Restaurant from "./Restaurant";
-// import Temperature from "./Temperature";
 // import Counter from './Counter';
 // import TextApi from "./TextApi";
 // import Sort from "./Sort";
@@ -19,12 +17,11 @@ class App extends Component {
       // <Sort />
       // <Section/>
       // <PickImg/>
-      // <Restaurant/>
-      // <Temperature/>
       // <DataArr/>
       // <DataObject/>
       // <LocalObj />
-      <Callback />
+      // <Callback />
+      <Status />
     );
   }
 }

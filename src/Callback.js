@@ -5,6 +5,7 @@ import { hiddenTag } from "./utils";
 export class Callback extends Component {
   constructor(props) {
     super(props);
+    this.countDown = this.countDown.bind(this);
     this.state = {
       datas: [],
       isErr: false,
@@ -59,6 +60,24 @@ export class Callback extends Component {
       plus: data.reduce((a, item) => (a = a + parseInt(item.id)), 0),
     });
   };
+
+  localDeleteOperation = (id) => {
+    let { datas } = this.state;
+    this.setState((prevState, props) => {
+      const dataItems = [...prevState.datas];
+      const indexOfDataToDelete = datas.findIndex((data) => data.id === id);
+      dataItems.splice(indexOfDataToDelete, 1);
+      console.log(dataItems);
+      this.sumId(dataItems);
+      return { datas: dataItems };
+    });
+  };
+
+  // updateList = (items) => {
+  //   this.setState({
+  //     datas: items,
+  //   });
+  // };
 
   countDown = () => {
     this.inter = setInterval(() => {
@@ -127,6 +146,9 @@ export class Callback extends Component {
               </div>
             ))} */}
             {this.renderItem(dataItem)}
+            <button onClick={() => this.localDeleteOperation(dataItem.id)}>
+              Delete
+            </button>
             {/* <RenderItem dataItem={dataItem} /> */}
             {/* = {dataItem.counter} */}
           </div>

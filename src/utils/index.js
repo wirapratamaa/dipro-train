@@ -18,3 +18,7 @@ export const mappingString = (param) => {
 export const hiddenTag = (param) => {
   return param < 0 ? "hidden" : "";
 };
+
+export const coloring = (param) => {
+  return param === true ? "red" : "";
+};
